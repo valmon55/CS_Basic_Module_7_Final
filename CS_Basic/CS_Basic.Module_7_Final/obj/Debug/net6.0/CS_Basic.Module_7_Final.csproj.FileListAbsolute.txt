@@ -1,0 +1,15 @@
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\bin\Debug\net6.0\CS_Basic.Module_7_Final.exe
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\bin\Debug\net6.0\CS_Basic.Module_7_Final.deps.json
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\bin\Debug\net6.0\CS_Basic.Module_7_Final.runtimeconfig.json
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\bin\Debug\net6.0\CS_Basic.Module_7_Final.dll
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\bin\Debug\net6.0\CS_Basic.Module_7_Final.pdb
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\CS_Basic.Module_7_Final.csproj.AssemblyReference.cache
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\CS_Basic.Module_7_Final.GeneratedMSBuildEditorConfig.editorconfig
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\CS_Basic.Module_7_Final.AssemblyInfoInputs.cache
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\CS_Basic.Module_7_Final.AssemblyInfo.cs
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\CS_Basic.Module_7_Final.csproj.CoreCompileInputs.cache
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\CS_Basic.Module_7_Final.dll
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\refint\CS_Basic.Module_7_Final.dll
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\CS_Basic.Module_7_Final.pdb
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\CS_Basic.Module_7_Final.genruntimeconfig.cache
+D:\SkillBox\Module_7_Final\CS_Basic\CS_Basic.Module_7_Final\obj\Debug\net6.0\ref\CS_Basic.Module_7_Final.dll
