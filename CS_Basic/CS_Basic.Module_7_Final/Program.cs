@@ -17,9 +17,9 @@
     }
     class Buyer
     {
-        string Name;
-        string Lastname;
-        public string Home_Address;
+        private string Name;
+        private string Lastname;
+        public string Home_Address;        
 
         public Buyer(string name) 
         { Name = name; }
@@ -30,7 +30,7 @@
         string email;
 
         Product[] product_list = new Product[10];
-        public virtual void AddToCart(Product product)
+        public void AddToCart(Product product)
         { 
             for(int i = 0; i < product_list.Length; i++) 
             { 
@@ -41,7 +41,7 @@
                 }
             }
         }
-        public virtual void RemoveFromCart(Product product) 
+        public void RemoveFromCart(Product product) 
         {
             for (int i = product_list.Length - 1; i >= 0; i--)
             {
@@ -59,13 +59,18 @@
                 if (product_list[i] is not null)
                     Console.WriteLine(product_list[i].Product_name);            
         }
+
         /// <summary>
         /// Заказать доставку
         /// </summary>
-        public virtual void CreateOrder<TDelivery>(string addrees) where TDelivery : Delivery
+        public void CreateOrder<TDelivery>(string addrees) where TDelivery : Delivery
         {
+            Order<TDelivery> order = new Order<TDelivery>();
+            order.Products = this.product_list;
+            order.Address = addrees;
             PrintOrder();
             Console.WriteLine("Создан заказ с доставкой на адрес " + addrees);
+            
         }
     }
 
@@ -107,21 +112,35 @@
         { Product_name = product_name; }
     }
 
-    class Order<TDelivery,
-    TStruct> where TDelivery : Delivery
+    class Order<TDelivery/*,TStruct*/> where TDelivery : Delivery //, new() - сделал для композиции, не работает
     {
-        public TDelivery Delivery;
+        private TDelivery delivery;
+
+        // композиция
+        //public Order<TDelivery>(TDelivery delivery)
+        //{
+        //    this.delivery = delivery;
+        //}
+        
+        // Агрегация
+        //public Order<TDelivery>()
+        //    {
+        //        delivery = new <TDelivery>(); //так ошибка
+        //    }
 
         public int Number;
+
+        public string Address;
 
         public string Description;
 
         public Product[] Products;
+        
+        
         public void DisplayAddress()
         {
-            Console.WriteLine(Delivery.Address);
+            Console.WriteLine(delivery.Address);
         }
-
     }
     internal class Program
     {
