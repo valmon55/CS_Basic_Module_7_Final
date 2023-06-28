@@ -116,13 +116,13 @@
     {
         private TDelivery delivery;
 
-        // композиция
+        // Агрегация
         //public Order<TDelivery>(TDelivery delivery)
         //{
         //    this.delivery = delivery;
         //}
-        
-        // Агрегация
+
+        // композиция
         //public Order<TDelivery>()
         //    {
         //        delivery = new <TDelivery>(); //так ошибка
