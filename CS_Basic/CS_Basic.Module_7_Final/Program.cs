@@ -77,20 +77,21 @@ namespace CS_Basic.Module_7_Final
         /// </summary>
         public void CreateOrder<TDelivery>(string addrees, DelivType delivType) where TDelivery : Delivery
         {
-            Order order;
+            Order<TDelivery> order;
             switch (delivType)
             {
                 case DelivType.Shop: 
-                    order = new Order(new ShopDelivery());
+                    order = new Order<TDelivery>(new ShopDelivery());
                     break;
                 case DelivType.PickPoint:
-                    pickPointDelivery= new PickPointDelivery();
+                    order = new Order(new PickPointDelivery());
                     break;
                 case DelivType.Home:
-                    homeDelivery= new HomeDelivery();
+                    order = new Order(new HomeDelivery());
                     break;
                 default:
                     Console.WriteLine("Не выбрана корректная доставка");
+                    return;
                     break;
             }
             order.Products = this.product_list;
