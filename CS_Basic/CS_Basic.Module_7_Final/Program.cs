@@ -1,4 +1,6 @@
-﻿namespace CS_Basic.Module_7_Final
+﻿using System.Net.Http.Headers;
+
+namespace CS_Basic.Module_7_Final
 {
     abstract class Delivery
     {
@@ -19,8 +21,18 @@
     {
         private string Name;
         private string Lastname;
-        public string Home_Address;        
+        public string Home_Address;
 
+        public enum DelivType
+        {
+            Home = 0,
+            Shop,
+            PickPoint
+        }
+
+        private HomeDelivery homeDelivery;
+        private PickPointDelivery pickPointDelivery;
+        private ShopDelivery shopDelivery;
         public Buyer(string name) 
         { Name = name; }
         public Buyer(string name, string lastname) :this(name) 
@@ -63,9 +75,24 @@
         /// <summary>
         /// Заказать доставку
         /// </summary>
-        public void CreateOrder<TDelivery>(string addrees) where TDelivery : Delivery
+        public void CreateOrder<TDelivery>(string addrees, DelivType delivType) where TDelivery : Delivery
         {
-            Order<TDelivery> order = new Order<TDelivery>();
+            Order order;
+            switch (delivType)
+            {
+                case DelivType.Shop: 
+                    order = new Order(new ShopDelivery());
+                    break;
+                case DelivType.PickPoint:
+                    pickPointDelivery= new PickPointDelivery();
+                    break;
+                case DelivType.Home:
+                    homeDelivery= new HomeDelivery();
+                    break;
+                default:
+                    Console.WriteLine("Не выбрана корректная доставка");
+                    break;
+            }
             order.Products = this.product_list;
             order.Address = addrees;
             PrintOrder();
@@ -112,23 +139,25 @@
         { Product_name = product_name; }
     }
 
-    class Order<TDelivery/*,TStruct*/> where TDelivery : Delivery //, new() - сделал для композиции, не работает
+    class Order<TDelivery/*,TStruct*/> where TDelivery : Delivery
     {
-        private TDelivery delivery;
+        private TDelivery _delivery;
+
 
         // Агрегация
-        //public Order<TDelivery>(TDelivery delivery)
-        //{
-        //    this.delivery = delivery;
-        //}
+        public Order(TDelivery delivery)
+        {
+            _delivery = delivery;
+        }
 
         // композиция
-        //public Order<TDelivery>()
-        //    {
-        //        delivery = new <TDelivery>(); //так ошибка
-        //    }
+        //private HomeDelivery _homeDelivery;
+        //public Order()
+        //{
+        //    _homeDelivery = new HomeDelivery();
+        //}
 
-        public int Number;
+    public int Number;
 
         public string Address;
 
@@ -152,20 +181,20 @@
             Jane.AddToCart(new Product("Сыр"));
             Jane.AddToCart(new Product("Чай"));
             Jane.AddToCart(new Product("Сэндвич"));
-            Jane.CreateOrder<HomeDelivery>(Jane.Home_Address);
+            Jane.CreateOrder<HomeDelivery>(Jane.Home_Address,Buyer.DelivType.Home);
 
             Buyer Teresa = new Buyer("Teresa", "Lisbon");
             Teresa.Home_Address = "CBI Sacramento";
             Teresa.AddToCart(new Product("Салат"));
             Teresa.AddToCart(new Product("Кофе"));
             Teresa.AddToCart(new Product("Чизкейк"));
-            Teresa.CreateOrder<ShopDelivery>("Chic av. 2" );
+            Teresa.CreateOrder<ShopDelivery>("Chic av. 2",Buyer.DelivType.Shop);
 
             Buyer Cho = new Buyer("Cho");
             Cho.Home_Address = "CBI Sacramento";
             Cho.AddToCart(new Product("Кола"));
             Cho.AddToCart(new Product("Гамбургер"));
-            Cho.CreateOrder<PickPointDelivery>("5th av. 55");
+            Cho.CreateOrder<PickPointDelivery>("5th av. 55",Buyer.DelivType.PickPoint);
 
             Console.ReadKey();
 
